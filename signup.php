@@ -51,101 +51,109 @@ if(!empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['repas
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signup to my platform</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <title>GADEMY</title>
+    <link rel="stylesheet" href="./css/signup.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    <div class="card">
-
-        <h1 style="margin-block-start: 0px; margin-block-end: 0px;">
-            Signup
-        </h1>
-
-        <?php require 'partials/header.php' ?>
-        <?php if(!empty($message)): ?>
-            <p style="color: #d90000;">
-                <?= $message; ?>
-            </p>
-        <?php endif; ?>
-
-        <form action="signup.php" method="post">
-            <br>
-            <input 
-                type="text" 
-                name="name" 
-                id="name"
-                placeholder="Enter your name"
-                class="inputStyle"
-            >
-            <input 
-                type="email" 
-                name="email" 
-                id="email"
-                placeholder="Enter your email"
-                class="inputStyle"
-            >
-            <input 
-                type="text" 
-                name="mae_img" 
-                id="mae_img"
-                placeholder="Enter your photo link"
-                class="inputStyle"
-            >
-            <label for="verify">¿Are you teacher?</label>
-            <input 
-                type="checkbox" 
-                name="verify" 
-                id="verify"
-                class="inputStyle"
-            >
-            <input 
-                type="password" 
-                name="password" 
-                id="password"
-                placeholder="Enter your password"
-                class="inputStyle"
-            >
-            <input 
-                type="password" 
-                name="repassword" 
-                id="repassword"
-                placeholder="Confirm your password"
-                class="inputStyle"
-                style="margin-block-end: 0px;"
-            >
-            <input 
-                type="submit" 
-                value="Register"
-                class="button-signup"
-                id="signupButton"
-            >
-        </form>
-        <span style="margin-block-start: auto">Do you already have an account? Please: </span>
-        <a href="login.php" class="button-login">Login</a>
+    <div class="sidebar" id="sidebar">
+        <div class="logo-details">
+            <img src="./images/logo-v.jpg" style="width: 60px;" class="bx icon">
+            <div class="logo_name">GADEMY</div>
+            <i class='bx bx-menu' id="btn"></i>
+        </div>
+        <ul class="nav-list">
+            <li>
+                <a href="./">
+                    <i class='bx bxs-home'></i>
+                    <span class="links_name">Home</span>
+                </a>
+                <span class="tooltip">Home</span>
+            </li>
+            <li>
+                <a href="./views/about.html">
+                    <i class='bx bx-question-mark'></i>
+                    <span class="links_name">About us</span>
+                </a>
+                <span class="tooltip">About us</span>
+            </li>
+        </ul>
     </div>
-    <script>
-        const emailInput = document.getElementById('email');
-        const passwordInput = document.getElementById('password');
-        const repasswordInput = document.getElementById('repassword');
-        const signupButton = document.getElementById('signupButton');
+    <section class="home-section">
+        <div class="container">
+            <div class="card">
+                <div class="user-icon">
+                    <img src="./images/usersc.png" alt="User Icon">
+                </div>
+                <h1 style="margin-block-start: 0px; margin-block-end: 0px; text-align:center;">
+                    Signup
+                </h1>
 
-        emailInput.addEventListener('input', toggleSignupButton);
-        passwordInput.addEventListener('input', toggleSignupButton);
-        repasswordInput.addEventListener('input', toggleSignupButton);
+                <?php require 'partials/header.php' ?>
+                <?php if(!empty($message)): ?>
+                    <p style="color: #d90000;">
+                        <?= $message; ?>
+                    </p>
+                <?php endif; ?>
 
-        function toggleSignupButton() {
-            if (emailInput.value.trim() === '' || passwordInput.value.trim() === '' || repasswordInput.value.trim() === '') {
-                signupButton.disabled = true;
-                signupButton.style.backgroundColor = '#a8a8a8';
-                signupButton.style.cursor = 'no-drop';
-            } else {
-                signupButton.disabled = false;
-                signupButton.style.cursor = 'pointer';
-                signupButton.style.backgroundColor = '#224667';
-            }
-        }
-    </script>
+                <form action="signup.php" method="post">
+                    <br>
+                    <input 
+                        type="text" 
+                        name="name" 
+                        id="name"
+                        placeholder="Enter your name"
+                        class="inputStyle"
+                    >
+                    <input 
+                        type="email" 
+                        name="email" 
+                        id="email"
+                        placeholder="Enter your email"
+                        class="inputStyle"
+                    >
+                    <input 
+                        type="text" 
+                        name="mae_img" 
+                        id="mae_img"
+                        placeholder="Enter your photo link"
+                        class="inputStyle"
+                    >
+                    <input 
+                        type="password" 
+                        name="password" 
+                        id="password"
+                        placeholder="Enter your password"
+                        class="inputStyle"
+                    >
+                    <input 
+                        type="password" 
+                        name="repassword" 
+                        id="repassword"
+                        placeholder="Confirm your password"
+                        class="inputStyle"
+                        style="margin-block-end: 0px;"
+                    >
+                    <div style="display: flex; align-items: center;">
+                        <label for="verify">¿Are you a teacher?</label>
+                        <input type="checkbox" name="verify" id="verify" class="inputStyle"
+                                style="width: 40%; margin-top: 15px;">
+                    </div>
+                    <input 
+                        type="submit" 
+                        value="Register"
+                        class="button-signup"
+                        id="signupButton"
+                        disabled
+                    >
+                </form>
+                <span style="margin-block-start: auto">Do you already have an account? Please: </span>
+                <a href="login.php" class="button-login">Login</a>
+            </div>
+        </div>
+    </section>
+    <script type="module" src="./js/index.js"></script>
+    <script type="module" src="./js/signup.js"></script>
 </body>
 </html>
