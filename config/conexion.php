@@ -4,9 +4,9 @@
     $password = 'root';
     $database = 'gademy';
     
-    try {
-        $conn = new PDO("mysql:host=$server;dbname=$database;", $username, $password);
-    } catch (PDOException $error) {
+    try{
+        $conn = new PDO("mysql:host=$server; dbname=$database;", $username, $password);
+    }catch(PDOException $error) {
         die('Connection Failed: ' . $error->getMessage());
     }
 ?>

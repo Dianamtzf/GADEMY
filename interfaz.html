@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!-- Created by CodingLab |www.youtube.com/CodingLabYT-->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title>Responsive Sidebar Menu | CodingLab</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <div class="sidebar" id="sidebar">
+      <div class="logo-details">
+        <img src="./images/logo-v.jpg" style="width: 60px;" class="bx icon">
+        <div class="logo_name">GADEMY</div>
+        <i class='bx bx-menu' id="btn"></i>
+      </div>
+      <ul class="nav-list">
+        <li>
+          <a href="#">
+            <i class='bx bxs-home'></i>
+            <span class="links_name">Home</span>
+          </a>
+          <span class="tooltip">Home</span>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bx-question-mark'></i>
+            <span class="links_name">About us</span>
+          </a>
+          <span class="tooltip">About us</span>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bx-book-bookmark'></i>
+            <span class="links_name">Courses</span>
+          </a>
+          <span class="tooltip">Courses</span>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bxs-graduation'></i>
+            <span class="links_name">Teachers</span>
+          </a>
+          <span class="tooltip">Teachers</span>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bxs-group'></i>
+            <span class="links_name">Students</span>
+          </a>
+          <span class="tooltip">Students</span>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bx-cog'></i>
+            <span class="links_name">Settings</span>
+          </a>
+          <span class="tooltip">Settings</span>
+        </li>
+        <li class="profile">
+          <a href="#">
+            <i class='bx bx-log-out'></i>
+            <span class="links_name">Logout</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    
+    <section class="home-section">
+      <div class="text">Agregar sus cambios</div>
+    </section>
+    <script>
+      let sidebar = document.querySelector(".sidebar");
+      let closeBtn = document.querySelector("#btn");
+
+      // Comprobar si el menú estaba abierto antes de volver a cargar la página
+      if (localStorage.getItem("sidebarOpen") === "true") {
+        sidebar.classList.add("open");
+        menuBtnChange();
+      }
+
+      closeBtn.addEventListener("click", () => {
+        sidebar.classList.toggle("open");
+        menuBtnChange();
+        // Guardar el estado del menú en el almacenamiento local
+        localStorage.setItem("sidebarOpen", sidebar.classList.contains("open"));
+      });
+
+      // Cambiar el botón del menú
+      function menuBtnChange() {
+        if (sidebar.classList.contains("open")) {
+          closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+        } else {
+          closeBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+        }
+      }
+    </script>
+  </body>
+</html>
