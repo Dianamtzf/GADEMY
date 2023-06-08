@@ -203,17 +203,6 @@
   }
 }
 
-.card {
-    background-color: transparent;
-    margin: 30px;
-    max-width: 400px;
-    padding: 20px;
-    text-align: center;
-    border-radius: 10px;
-    color: #ffffff;
-    height: 480px; 
-    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
-  }
   
 
 .imgStyle{
@@ -244,18 +233,6 @@
     
 }
 
-.buscStyle{
-    width: 600px;
-    padding: 10px;
-    border: none;
-    border-radius: 20px;
-    background-color: transparent;
-    box-shadow: 0 2px 5px rgb(255 255 255 / 20%);
-    font-size: 16px;
-    color: #ffffff;
-    margin-top: 20px;
-    outline: none;
-}
 
 
 #buscador::placeholder {
