@@ -10,7 +10,7 @@
     $stmt = $conn->prepare($query);
     $resultado = $stmt->execute();
 
-    $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $data = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -25,6 +25,7 @@
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.css">
 </head>
 <body>
     <div class="sidebar" id="sidebar">
@@ -87,22 +88,25 @@
     
     <section class="home-section" style="display: flex; justify-content: center;">
         <div class="col-md-12">
-            <h3 style="color: #fff;">Update Course</h3>
-            <form action="edit.php" method="post">
-                <input type="text" name="cur_name" value="<?php echo $data['cur_name']?>">
-                <input type="text" name="cur_category" class="form-control mb-3" value="<?php echo $data['cur_category']?>">
-                <input type="text" name="cur_descrip" class="form-control mb-3" value="<?php echo $data['cur_descrip']?>">
-                <input type="text" name="cur_img" class="form-control mb-3" value="<?php echo $data['cur_img']?>">
-                <input type="number" name="cur_mae_id" min="0" max="999" class="form-control mb-3" value="<?php echo $data['cur_mae_id']?>">
-                <div style="display: flex; align-items: baseline;">
-                    <a href="table.php" class="btn btn-warning mb-5" style="margin: 10px;">Cancel</a>
-                    <input type="submit" class="btn" style="background-color: #429867;" value="Actualizar">
-                </div>
+            <h3 style="color: #fff;">Edit Course</h3>
+            <form action="update.php" method="post">
+              <input type="hidden" name="cur_id" value="<?php echo $data['cur_id']?>">
+              <input type="text" name="cur_name" value="<?php echo $data['cur_name'];?>">
+              <input type="text" name="cur_category" class="form-control mb-3" value="<?php echo $data['cur_category'];?>">
+              <input type="text" name="cur_descrip" class="form-control mb-3" value="<?php echo $data['cur_descrip'];?>">
+              <input type="text" name="cur_img" class="form-control mb-3" value="<?php echo $data['cur_img'];?>">
+              <input type="number" name="cur_mae_id" min="0" max="999" class="form-control mb-3" value="<?php echo $data['cur_mae_id'];?>">
+              <div style="display: flex; align-items: baseline;">
+                  <a href="table.php" class="btn btn-warning mb-5" style="margin: 10px;">Cancel</a>
+                  <button id="btnOpenAlert" class="btn" style="background-color: #429867;">Update</button>
+              </div>
             </form>
         </div>
     </section>
-    
+    <!--<input type="submit" id="btnUpdate" class="btn" style="background-color: #429867;" value="Update">-->
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.all.min.js"></script>
     <script type="module" src="../../js/index.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script type="module" src="../../js/sweetAlert.js"></script>
 </body>
 </html>

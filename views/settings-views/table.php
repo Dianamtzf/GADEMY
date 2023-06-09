@@ -9,7 +9,7 @@
 
     $stmt = $conn->prepare($query);
     $resultado = $stmt->execute();
-
+  
     $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
     $iterator = new ArrayIterator($data);
 ?>
@@ -26,6 +26,7 @@
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.css">
 </head>
 <body>
     <div class="sidebar" id="sidebar">
@@ -85,14 +86,18 @@
         </li>
       </ul>
     </div>
-    
-    <section class="home-section" style="display: flex; justify-content: center;">
-        <div class="buscador">
-            Aqui va el buscador
+    <div class="encabezado" style="display: flex; justify-content: center; align-items: flex-end;">
+      <div style="display: flex; justify-content: center; align-items: center;">
+        <div class="search-bar">
+              <input type="text" placeholder="Search" name="q" class="buscador">
+              <button><img src="../../images/search.png" alt=""></button>
         </div>
-        <a href="../home.php">Add Course</a>
+        <a href="home.php" class="btn btn-success btnAdd">Add Course</a>
+      </div>
+    </div>
+    <section class="home-section" style="display: flex; justify-content: center; align-items: center;">
         <div class="col-md-6">
-            <h3 class="text-center" style="color: #fff;">Registered Courses</h3>
+            <h3 class="text-center" style="color: #fff; margin-top: 40px;">Registered Courses</h3>
             <table class="table" style="color: #fff;">
                 <thead>
                     <tr>
@@ -119,41 +124,57 @@
                             <!-- Button trigger modal -->
                             <button 
                                 type="button"
-                                class="btn btn-primary"
+                                class="btn btn-danger"
+                                id="btnBorrar"
                                 onclick="eliminarRegistro(<?php echo $row['cur_id']?>)"
-                                data-bs-toggle="modal"
-                                data-bs-target="#exampleModal">
+                              >
                                 Delete
                             </button>
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Delete Course</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            Do you want to delete this course?
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                            <button type="button" class="btn btn-danger" onclick="eliminarUsuario()">Delete Course</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            </td>
                         </tr>
                         <?php $iterator->next(); ?>
                     <?php }?>
                 </tbody>
             </table>
+            <button type="button" class="btn btn-danger prueba" onclick="eliminarCurso()">Delete Course</button>
         </div>
     </section>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.all.min.js"></script>
     <script type="module" src="../../js/index.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    
+    <script>
+      const btnDelete = document.querySelector('.prueba');
+
+      function eliminarRegistro(id) {
+        document.getElementById("btnBorrar").setAttribute('data-id', id)
+      }
+
+      function eliminarCurso() {
+        var curso = document.getElementById("btnBorrar").getAttribute('data-id')
+        window.location.href = 'delete.php?cur_id=' + curso
+      }
+
+      btnDelete.addEventListener('click', () => {
+        console.log('@@@@ => entra aqui')
+          Swal.fire({
+              title: 'Are you sure?',
+              text: "Do you want to delete this course?",
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              html: "<br><br><button type='button' class='btn btn-danger' onclick='eliminarCurso()'>Delete Course</button>"
+            }).then((result) => {
+              if (result.isConfirmed) {
+                Swal.fire(
+                  'Deleted!',
+                  'Your file has been deleted.',
+                  'success'
+                )
+              }
+            })
+      })
+    </script>
+    
 </body>
 </html>

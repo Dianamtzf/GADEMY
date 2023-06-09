@@ -114,7 +114,7 @@
                         <span class="tooltip">Courses</span>
                     </li>
                     <li>
-                        <a href="./views/home.php">
+                        <a href="./views/settings-views/table.php">
                             <i class='bx bx-cog'></i>
                             <span class="links_name">Settings</span>
                         </a>

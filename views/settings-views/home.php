@@ -1,7 +1,7 @@
 <?php
     ini_set('display_errors', 1);
     error_reporting(E_ALL);
-    require '../config/conexion.php';
+    require '../../config/conexion.php';
     $message = '';
 
     if(!empty($_POST['cur_mae_id']) && !empty($_POST['cur_name']) && !empty($_POST['cur_category'])) {
@@ -40,8 +40,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Settings</title>
-    <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../../css/index.css">
+    <link rel="stylesheet" href="../../css/style.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -55,7 +55,7 @@
 
     <div class="sidebar" id="sidebar">
         <div class="logo-details">
-            <img src="../images/logo-v.jpg" style="width: 60px;" class="bx icon">
+            <img src="../../images/logo-v.jpg" style="width: 60px;" class="bx icon">
             <div class="logo_name">GADEMY</div>
             <i class='bx bx-menu' id="btn"></i>
         </div>
@@ -178,20 +178,24 @@
                             <label>Teacher</label>
                         </div>
                     </div>
-                    <input 
-                        type="submit" 
-                        value="Add Course"
-                        id="addCButton"
-                        class="btnAddCourse"
-                    >
-                    <a href="./settings-views/table.php">Cancel</a>
+
+                    <div style="display: flex; align-items: center; justify-content: center;">
+                        <a href="table.php" class="btn btn-warning" style="margin-right: 20px;">Cancel</a>
+                        <input 
+                            type="submit" 
+                            value="Add Course"
+                            id="addCButton"
+                            class="btnAddCourse"
+                        >
+                    </div>
+                    
                 </form>
 
             </div>
         </div>
     </section>
     
-    <script type="module" src="../js/index.js"></script>
+    <script type="module" src="../../js/index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 </html>
