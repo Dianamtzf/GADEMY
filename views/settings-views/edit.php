@@ -78,25 +78,60 @@
         </li>
       </ul>
     </div>
-    
-    <section class="home-section" style="display: flex; justify-content: center;">
-        <div class="col-md-12">
-            <h3 style="color: #fff;">Edit Course</h3>
-            <form action="update.php" method="post">
-              <input type="hidden" name="cur_id" value="<?php echo $data['cur_id']?>">
-              <input type="text" name="cur_name" value="<?php echo $data['cur_name'];?>">
-              <input type="text" name="cur_category" class="form-control mb-3" value="<?php echo $data['cur_category'];?>">
-              <input type="text" name="cur_descrip" class="form-control mb-3" value="<?php echo $data['cur_descrip'];?>">
-              <input type="text" name="cur_img" class="form-control mb-3" value="<?php echo $data['cur_img'];?>">
-              <input type="number" name="cur_mae_id" min="0" max="999" class="form-control mb-3" value="<?php echo $data['cur_mae_id'];?>">
-              <div style="display: flex; align-items: baseline;">
-                  <a href="table.php" class="btn btn-warning mb-5" style="margin: 10px;">Cancel</a>
-                  <button type="submit" class="btn" style="background-color: #429867;" onclick="mostrarDialogo(event)">Update</button>
-              </div>
-            </form>
+
+    <section class="home-section" 
+                style="background-image: linear-gradient(to bottom, rgb(33 33 33 / 70%), rgba(33,33,33,1));
+                    background-size: contain; min-height: 100vh; background-repeat: no-repeat; background-position: center top;
+                    background-position: center; background-size: cover;">
+        <div class="container">
+            <div class="card-addCourse">
+                <p style="font-size: 25px; color: #0cbb52; font-weight: 600;">Edit Course</p>
+                <form action="update.php" method="post" style="">
+                  <input type="hidden" name="cur_id" value="<?php echo $data['cur_id']?>">
+                    <div class="input-espaciado">
+                        <div class="input-field">
+                          <input type="text" name="cur_name" id="cur_name" value="<?php echo $data['cur_name'];?>" required>  
+                          <label>Course Name</label>
+                        </div>
+                    </div>
+
+                    <div class="input-espaciado">
+                        <div class="input-field">
+                          <input type="text" name="cur_category" id="cur_category" value="<?php echo $data['cur_category'];?>" required>
+                          <label>Course Category</label>
+                        </div>
+                    </div>
+
+                    <div class="input-espaciado">
+                        <div class="input-field">
+                          <input type="text" name="cur_descrip" id="cur_descrip" value="<?php echo $data['cur_descrip'];?>" required>
+                          <label>Course Description</label>
+                        </div>
+                    </div>
+
+                    <div class="input-espaciado">
+                        <div class="input-field">
+                          <input type="text" name="cur_img" id="cur_img" value="<?php echo $data['cur_img'];?>" required>  
+                          <label>Course's URL image</label>
+                        </div>
+                    </div>
+
+                    <div class="input-espaciado">
+                        <div class="input-field">
+                          <input type="number" name="cur_mae_id" min="0" max="999" id="cur_mae_id" value="<?php echo $data['cur_mae_id'];?>" required>  
+                          <label>Teacher</label>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; align-items: center; justify-content: center;">
+                        <a href="table.php" class="btn btn-warning" style="margin-right: 20px;">Cancel</a>
+                        <button type="submit" class="btn" style="background-color: #429867;" onclick="mostrarDialogo(event)">Update</button>
+                    </div>
+                    
+                </form>
+            </div>
         </div>
     </section>
-    <!--<input type="submit" id="btnUpdate" class="btn" style="background-color: #429867;" value="Update">-->
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.all.min.js"></script>
     <script type="module" src="../../js/index.js"></script>

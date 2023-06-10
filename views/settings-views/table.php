@@ -5,7 +5,11 @@
     include("../../config/conexion.php");
     $message = '';
 
-    $query = "SELECT * FROM cursos";
+    $query = 'SELECT cursos.*, maestros.name
+               FROM cursos 
+               LEFT JOIN maestros 
+                ON maestros.id = cursos.cur_mae_id
+               ORDER BY cursos.cur_id ASC';
 
     $stmt = $conn->prepare($query);
     $resultado = $stmt->execute();
@@ -82,7 +86,7 @@
     <div class="encabezado" style="display: flex; justify-content: center; align-items: flex-end;">
       <div style="display: flex; justify-content: center; align-items: center;">
         <div class="search-bar">
-              <input type="text" placeholder="Search" name="q" class="buscador">
+              <input type="text" placeholder="Search by name" name="q" class="buscador" id="buscador">
               <button><img src="../../images/search.png" alt=""></button>
         </div>
         <a href="home.php" class="btn btn-success btnAdd">Add Course</a>
@@ -98,6 +102,7 @@
                         <th>Name</th>
                         <th>Category</th>
                         <th>Description</th>
+                        <th>Teacher</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -105,49 +110,39 @@
                 <tbody>
                     <?php while($iterator->valid()){ ?>
                         <?php $row = $iterator->current();?>
-                        <tr>
+                        <tr class="fila">
                             <td><?php echo $row['cur_id']?></td>
-                            <td><?php echo $row['cur_name']?></td>
+                            <td class="course-name"><?php echo $row['cur_name']?></td>
                             <td><?php echo $row['cur_category']?></td>
                             <td><?php echo $row['cur_descrip']?></td>
+                            <td><?php echo $row['name']?></td>
                             <td>
                                 <a href="edit.php?cur_id=<?php echo $row['cur_id']?>" class="btn btn-warning">Edit</a>
                             </td>
                             <td>
-                            <!-- Button trigger modal -->
+                            <!-- Button trigger alert -->
                             <a href="delete.php?cur_id=<?php echo $row['cur_id']?>"
                                 class="btn btn-danger"
                                 onclick="confirmarBorrado(event)"
                               >
                                 Delete
                             </a>
-
-                            <!--
-                            <button 
-                                type="button"
-                                class="btn btn-danger"
-                                id="btnBorrar"
-                                onclick="eliminarRegistro(<php echo $row['cur_id']?>)"
-                              >
-                                Delete
-                            </button> -->
-
                         </tr>
                         <?php $iterator->next(); ?>
                     <?php }?>
                 </tbody>
             </table>
-            <!--
-            <button type="button" class="btn btn-danger prueba" onclick="eliminarCurso()">Delete Course</button>-->
         </div>
     </section>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.all.min.js"></script>
     <script type="module" src="../../js/index.js"></script>
     
     <script>
+      const searchInput = document.getElementById('buscador');
+      const row = document.querySelectorAll('.fila');
 
       function confirmarBorrado(event) {
-        event.preventDefault(); // Evita que se siga el enlace por defecto
+        event.preventDefault();
 
         Swal.fire({
               title: 'Are you sure?',
@@ -163,6 +158,15 @@
               }
             })
       } 
+
+      searchInput.addEventListener('keyup', (event) => { 
+        const searchTerm = event.target.value.toLowerCase();
+        // console.log('KEYBOARD =>', searchTerm)
+        row.forEach((fila) => {
+          const courseName = fila.querySelector('.course-name').textContent.toLowerCase();
+          fila.style.visibility = courseName.includes(searchTerm) ? 'visible' : 'collapse';
+        })
+      })
     </script>
     
 </body>
