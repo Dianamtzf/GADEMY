@@ -1,1 +1,116 @@
-<!-- Vista de la pestaña About US-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="icon" href="../images/logo.ico"></link>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>GADEMY</title>
+        <link rel="stylesheet" href="../css/about.css">
+        <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="sidebar" id="sidebar">
+            <div class="logo-details">
+                <img src="../images/logo-v.jpg" style="width: 60px;" class="bx icon">
+                <div class="logo_name">GADEMY</div>
+                <i class='bx bx-menu' id="btn"></i>
+            </div>
+            <ul class="nav-list">
+                <li>
+                    <a href="../">
+                        <i class='bx bxs-home'></i>
+                        <span class="links_name">Home</span>
+                    </a>
+                    <span class="tooltip">Home</span>
+                </li>
+                <li>
+                    <a href="../views/about.html">
+                        <i class='bx bx-question-mark'></i>
+                        <span class="links_name">About us</span>
+                    </a>
+                    <span class="tooltip">About us</span>
+                </li>
+            </ul>
+        </div>
+        <section class="home-section" >
+            <div class="head" style="min-height: 100vh;">
+                <div class="head-v" style="background-image: linear-gradient(to bottom, rgb(33 33 33 / 70%), rgba(33,33,33,1)), url(../images/video-head.gif);
+                background-size: contain; min-height: 60vh; background-repeat: no-repeat; background-position: center top;
+                background-position: center; background-size: cover;">
+                </div>
+                <div class="container" style="min-height: 40vh;">
+                    <div class="section" >
+                        <h1>About GADEMY</h1>
+                        <nav class="nav-divider centrado" style=" 
+                                margin-left: auto;
+                                margin-right: auto;
+                                /* width: fit-content; */
+                                background-color: #ffffff3b;
+                                height: 2px;
+                                margin-bottom: 20px;
+                                width: 90%;
+                            ">
+                        </nav>
+                        <p>Gademy is an online course platform that offers a wide variety of learning options to improve your skills and knowledge. Our goal is to provide you with access to quality education in a convenient and flexible way.</p>
+                      </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="section" style="border-radius: 20px; background-color: #4c8b46; padding: 20px;">
+                  <h1 style="color: #e3e3e3;">Importancia de los Cursos en Línea</h1>
+                  <p>En la era digital actual, los cursos en línea se han convertido en una herramienta invaluable para el aprendizaje. Permiten a las personas acceder al material educativo desde cualquier lugar y en cualquier momento, adaptándose a su propio ritmo y disponibilidad. Los cursos en línea brindan oportunidades de crecimiento personal y profesional, y son una excelente manera de mantenerse actualizado en un mundo en constante evolución.</p>
+                </div>
+                <div class="section" style="background-image: linear-gradient(to bottom, rgb(33 33 33 / 71%), rgb(33 33 33 / 33%)), url(../images/heading-bg.jpg);
+                                            min-height: 30vh;
+                                            background-repeat: no-repeat;
+                                            background-position: center;
+                                            background-size: cover;
+                                            margin-top: 60px;
+                                            margin-block-end: 100px;
+                                            border-radius: 20px;"
+                >
+                <button class="button" onclick="redirectToParent()"> Start Now </button>
+                </div>
+                <nav class="nav-divider centrado" style=" 
+                                margin-left: auto;
+                                margin-right: auto;
+                                /* width: fit-content; */
+                                background-color: #ffffff3b;
+                                height: 2px;
+                                margin-bottom: 30px;
+                                width: 90%;
+                            ">
+                </nav>
+                <div class="section">
+                  <h1>Developers</h1>
+                  <div class="developers">
+                    <div class="developer">
+                      <img src="../images/Diana.png" alt="Diana">
+                      <p>Diana M. F.</p>
+                    </div>
+                    <div class="developer">
+                      <img src="../images/Gerardo.jpg" alt="Gerardo">
+                      <p>Gerardo R. R.</p>
+                    </div>
+                    <div class="developer">
+                      <img src="../images/Alexei.jpg" alt="Alexei">
+                      <p>Alexei G. C.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="section">
+                    <span style="color: rgb(145, 139, 139);">©Copyright all rights reserved</span>
+                </div>
+            </div>
+        </section>
+        <script type="module" src="../js/index.js"></script>
+        <script>
+            function redirectToParent() {
+              window.location.href = '../';
+            }
+            </script>
+    </body>
+</html>
