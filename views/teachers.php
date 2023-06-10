@@ -16,6 +16,7 @@ $maestros = $registro->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <title>Responsive Sidebar Menu | CodingLab</title>
+    <link rel="icon" href="../images/logo.ico"></link>
     <link rel="stylesheet" href="../css/teachers.css">
     <script type="module" src="../js/teachers.js"></script>
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -37,13 +38,6 @@ $maestros = $registro->fetchAll(PDO::FETCH_ASSOC);
                             <span class="links_name">Home</span>
                         </a>
                         <span class="tooltip">Home</span>
-                    </li>
-                    <li>
-                        <a href="about.html">
-                            <i class='bx bx-question-mark'></i>
-                            <span class="links_name">About us</span>
-                        </a>
-                        <span class="tooltip">About us</span>
                     </li>
                     <li>
                         <a href="courses.php">
@@ -86,9 +80,9 @@ $maestros = $registro->fetchAll(PDO::FETCH_ASSOC);
     <div class="buscador">
         <input type="text" class="buscStyle" id="buscador" placeholder="Search by name" style="  width: 600px;
                                                                                                         padding: 10px;
-                                                                                                        border: 2px solid ffffff38;
+                                                                                                        border: 2px solid #ffffff38;
                                                                                                         border-width: 1px;
-                                                                                                        border-radius: 14pxpx;
+                                                                                                        border-radius: 14px;
                                                                                                         background-color: transparent;
                                                                                                         font-size: 16px;
                                                                                                         color: #ffffff38;

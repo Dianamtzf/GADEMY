@@ -253,7 +253,7 @@ input.inputStyle {
     padding: 10px;
     color: #ffffff;
     border: none;
-    border-radius: 5px;
+    border-radius: 50px;
     margin-block-end: 10px;
     margin-block-start: 5px;
     font-size: inherit;
@@ -267,7 +267,7 @@ input.inputStyle {
     background-color: #4b8f44;
     color: #ffffff;
     border: none;
-    border-radius: 5px;
+    border-radius: 50px;
     text-decoration: none;
     text-align: center;
   }

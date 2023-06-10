@@ -6,6 +6,19 @@
   box-sizing: border-box;
   font-family: "Poppins" , sans-serif;
 }
+/* Estilos para el scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: #262626;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #4b8f44;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #6bcf6a;
+}
 .sidebar{
   position: fixed;
   left: 0;
@@ -203,8 +216,6 @@
   }
 }
 
-  
-
 .imgStyle{
     width: 100px;
 }
@@ -219,6 +230,17 @@
     flex-wrap: wrap;
 }
 
+.card {
+  background-color: transparent;
+  margin: 30px;
+  max-width: 400px;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+  color: #ffffff;
+  height: 515px;
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
+}
 .card-container{
     display: flex;
     flex-direction: row;
@@ -233,8 +255,20 @@
     
 }
 
-
+.buscStyle{
+  width: 600px;
+  padding: 10px;
+  border: 2px solid #ffffff38;
+  border-width: 1px;
+  border-radius: 14px;
+  background-color: transparent;
+  font-size: 16px;
+  color: #ffffff38;
+  margin-top: 20px;
+  outline: none;
+}
 
 #buscador::placeholder {
     color: #999;
-  }
+}
+
