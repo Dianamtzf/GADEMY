@@ -48,7 +48,7 @@ $maestros = $registro->fetchAll(PDO::FETCH_ASSOC);
                         <span class="tooltip">Courses</span>
                     </li>
                     <li>
-                        <a href="home.php">
+                        <a href="settings-views/home.php">
                             <i class='bx bx-cog'></i>
                             <span class="links_name">Settings</span>
                         </a>

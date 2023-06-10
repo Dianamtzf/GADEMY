@@ -1,7 +1,7 @@
 <?php
     ini_set('display_errors', 1);
     error_reporting(E_ALL);
-    require '../config/conexion.php';
+    require '../../config/conexion.php';
     $message = '';
 
     if(!empty($_POST['cur_mae_id']) && !empty($_POST['cur_name']) && !empty($_POST['cur_category'])) {
