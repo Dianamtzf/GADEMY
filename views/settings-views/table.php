@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.css">
 </head>
 <body>
-    <div class="sidebar" id="sidebar">
+  <div class="sidebar" id="sidebar">
       <div class="logo-details">
         <img src="../../images/logo-v.jpg" style="width: 60px;" class="bx icon">
         <div class="logo_name">GADEMY</div>
@@ -37,49 +37,42 @@
       </div>
       <ul class="nav-list" style="padding-left: 0rem;">
         <li>
-          <a href="#">
+          <a href="../../">
             <i class='bx bxs-home'></i>
             <span class="links_name">Home</span>
           </a>
           <span class="tooltip">Home</span>
         </li>
         <li>
-          <a href="#">
-            <i class='bx bx-question-mark'></i>
-            <span class="links_name">About us</span>
-          </a>
-          <span class="tooltip">About us</span>
-        </li>
-        <li>
-          <a href="#">
+          <a href="../courses.php">
             <i class='bx bx-book-bookmark'></i>
             <span class="links_name">Courses</span>
           </a>
           <span class="tooltip">Courses</span>
         </li>
         <li>
-          <a href="#">
+          <a href="../teachers.php">
             <i class='bx bxs-graduation'></i>
             <span class="links_name">Teachers</span>
           </a>
           <span class="tooltip">Teachers</span>
         </li>
         <li>
-          <a href="#">
+          <a href="../students.php">
             <i class='bx bxs-group'></i>
             <span class="links_name">Students</span>
           </a>
           <span class="tooltip">Students</span>
         </li>
         <li>
-          <a href="#">
+          <a href="table.php">
             <i class='bx bx-cog'></i>
             <span class="links_name">Settings</span>
           </a>
           <span class="tooltip">Settings</span>
         </li>
         <li class="profile">
-          <a href="#">
+          <a href="../../logout.php">
             <i class='bx bx-log-out'></i>
             <span class="links_name">Logout</span>
           </a>

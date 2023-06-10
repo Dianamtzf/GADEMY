@@ -47,13 +47,6 @@ $maestros = $registro->fetchAll(PDO::FETCH_ASSOC);
                         <span class="tooltip">Courses</span>
                     </li>
                     <li>
-                        <a href="settings-views/home.php">
-                            <i class='bx bx-cog'></i>
-                            <span class="links_name">Settings</span>
-                        </a>
-                        <span class="tooltip">Settings</span>
-                    </li>
-                    <li>
                         <a href="teachers.php">
                             <i class='bx bxs-graduation'></i>
                             <span class="links_name">Teachers</span>
@@ -66,6 +59,13 @@ $maestros = $registro->fetchAll(PDO::FETCH_ASSOC);
                             <span class="links_name">Students</span>
                         </a>
                         <span class="tooltip">Students</span>
+                    </li>
+                    <li>
+                        <a href="settings-views/table.php">
+                            <i class='bx bx-cog'></i>
+                            <span class="links_name">Settings</span>
+                        </a>
+                        <span class="tooltip">Settings</span>
                     </li>
                     <li class="profile">
                         <a href="../logout.php">
