@@ -9,7 +9,8 @@ btnUpdate.addEventListener('click', () => {
     )
 })
 
-btnDelete.addEventListener('click', () => {
+btnDelete.addEventListener('click', (e) => {
+  e.preventDefault()
     Swal.fire({
         title: 'Are you sure?',
         text: "Do you want to delete this course?",

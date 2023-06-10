@@ -22,12 +22,7 @@
     $resultado = $stmt->execute();
 
     if($resultado) {
-        echo '<script>
-                setTimeout(function() {
-                    window.location = "table.php";
-                }, 2000);
-              </script>';
-        //Header("Location: table.php");
+        Header("Location: table.php");
     } else {
         echo "Something went wrong";
     }

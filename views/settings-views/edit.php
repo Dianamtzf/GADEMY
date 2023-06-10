@@ -98,7 +98,7 @@
               <input type="number" name="cur_mae_id" min="0" max="999" class="form-control mb-3" value="<?php echo $data['cur_mae_id'];?>">
               <div style="display: flex; align-items: baseline;">
                   <a href="table.php" class="btn btn-warning mb-5" style="margin: 10px;">Cancel</a>
-                  <button id="btnOpenAlert" class="btn" style="background-color: #429867;">Update</button>
+                  <button type="submit" class="btn" style="background-color: #429867;" onclick="mostrarDialogo(event)">Update</button>
               </div>
             </form>
         </div>
@@ -107,6 +107,25 @@
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.all.min.js"></script>
     <script type="module" src="../../js/index.js"></script>
-    <script type="module" src="../../js/sweetAlert.js"></script>
+
+    <script>
+     function mostrarDialogo(event) {
+            event.preventDefault();
+            Swal.fire({
+                title: 'Do you want to update this course?',
+                text: "You can update it later if you want!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, update'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    event.target.form.submit();
+                }
+            });
+        }
+
+    </script>
 </body>
 </html>

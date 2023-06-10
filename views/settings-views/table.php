@@ -122,58 +122,54 @@
                             </td>
                             <td>
                             <!-- Button trigger modal -->
+                            <a href="delete.php?cur_id=<?php echo $row['cur_id']?>"
+                                class="btn btn-danger"
+                                onclick="confirmarBorrado(event)"
+                              >
+                                Delete
+                            </a>
+
+                            <!--
                             <button 
                                 type="button"
                                 class="btn btn-danger"
                                 id="btnBorrar"
-                                onclick="eliminarRegistro(<?php echo $row['cur_id']?>)"
+                                onclick="eliminarRegistro(<php echo $row['cur_id']?>)"
                               >
                                 Delete
-                            </button>
+                            </button> -->
 
                         </tr>
                         <?php $iterator->next(); ?>
                     <?php }?>
                 </tbody>
             </table>
-            <button type="button" class="btn btn-danger prueba" onclick="eliminarCurso()">Delete Course</button>
+            <!--
+            <button type="button" class="btn btn-danger prueba" onclick="eliminarCurso()">Delete Course</button>-->
         </div>
     </section>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.all.min.js"></script>
     <script type="module" src="../../js/index.js"></script>
     
     <script>
-      const btnDelete = document.querySelector('.prueba');
 
-      function eliminarRegistro(id) {
-        document.getElementById("btnBorrar").setAttribute('data-id', id)
-      }
+      function confirmarBorrado(event) {
+        event.preventDefault(); // Evita que se siga el enlace por defecto
 
-      function eliminarCurso() {
-        var curso = document.getElementById("btnBorrar").getAttribute('data-id')
-        window.location.href = 'delete.php?cur_id=' + curso
-      }
-
-      btnDelete.addEventListener('click', () => {
-        console.log('@@@@ => entra aqui')
-          Swal.fire({
+        Swal.fire({
               title: 'Are you sure?',
               text: "Do you want to delete this course?",
               icon: 'warning',
               showCancelButton: true,
               confirmButtonColor: '#3085d6',
               cancelButtonColor: '#d33',
-              html: "<br><br><button type='button' class='btn btn-danger' onclick='eliminarCurso()'>Delete Course</button>"
+              confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
               if (result.isConfirmed) {
-                Swal.fire(
-                  'Deleted!',
-                  'Your file has been deleted.',
-                  'success'
-                )
+                window.location.href = event.target.href;
               }
             })
-      })
+      } 
     </script>
     
 </body>
