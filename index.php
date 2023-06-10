@@ -101,7 +101,7 @@
                         <span class="tooltip">Courses</span>
                     </li>
                     <li>
-                        <a href="./views/settings-views/home.php">
+                        <a href="./views/settings-views/table.php">
                             <i class='bx bx-cog'></i>
                             <span class="links_name">Settings</span>
                         </a>
@@ -130,7 +130,7 @@
                 </ul>
             </div>
             <section class="home-section" 
-            style="background-image: linear-gradient(to bottom, rgb(33 33 33 / 70%), rgba(33,33,33,1)), url(../images/home2.jpg);
+                style="background-image: linear-gradient(to bottom, rgb(33 33 33 / 70%), rgba(33,33,33,1)), url(../images/home2.jpg);
                     background-size: contain; min-height: 100vh; background-repeat: no-repeat; background-position: center top;
                     background-position: center; background-size: cover;">
                 <div class="container">
@@ -181,10 +181,10 @@
                     The best courses with the best teachers. 
                 </h1>
                 <h1 style="color: #d6db8d; font-weight: bold; font-size: xxx-large;">
-                    Only at GADEMY.
+                    Only on GADEMY.
                 </h1>
                 <h1 style="color: #d6db8d; font-weight: bold; font-size: xxx-large;">
-                    Starts now!
+                    Let's Get Started!
                 </h1>
                 <div class="acciones">
                    <a href="login.php" class="button log" style="background-color: #ef6f13; margin-top: 25px; font-size: 1.1rem;">
