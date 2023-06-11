@@ -25,6 +25,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Courses Settings</title>
+    <link rel="icon" href="../../images/logo.ico"></link>
     <link rel="stylesheet" href="../../css/index.css">
     <link rel="stylesheet" href="../../css/style.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -83,6 +84,7 @@
         </li>
       </ul>
     </div>
+
     <div class="encabezado" style="display: flex; justify-content: center; align-items: flex-end;">
       <div style="display: flex; justify-content: center; align-items: center;">
         <div class="search-bar">

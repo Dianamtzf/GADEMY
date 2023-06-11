@@ -6,6 +6,19 @@
   box-sizing: border-box;
   font-family: "Poppins" , sans-serif;
 }
+/* Estilos para el scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: #262626;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #4b8f44;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #6bcf6a;
+}
 .sidebar{
   position: fixed;
   left: 0;
@@ -342,7 +355,7 @@
   width: calc(100% - 78px);
   transition: all 0.5s ease;
   z-index: 2;
-  height: 10vh;
+  height: 15vh;
 }
 .sidebar.open ~ .encabezado{
   left: 250px;
