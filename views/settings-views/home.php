@@ -9,7 +9,9 @@
         $cur_category = $_POST['cur_category'];
         $cur_descrip = $_POST['cur_descrip'];
         $cur_img = $_POST['cur_img'];
-        $cur_mae_id = $_POST['cur_mae_id'];
+        $cur_mae_id = $_POST['teacher'];
+
+        echo $cur_mae_id;
 
         $query = 'INSERT INTO cursos(cur_name, cur_category, cur_descrip, cur_img, cur_mae_id) 
                     VALUES(:cur_name, :cur_category, :cur_descrip, :cur_img, :cur_mae_id)'; 
@@ -106,7 +108,7 @@
         <div class="container">
             <div class="card-addCourse">
                 <p style="font-size: 25px; color: #0cbb52; font-weight: 600;">Add Course</p>
-                <form action="home.php" method="post" style="">
+                <form action="home.php" method="post">
                     <div class="input-espaciado">
                         <div class="input-field">
                             <input 
@@ -155,6 +157,27 @@
                         </div>
                     </div>
 
+                    <select name="teacher">
+                      <?php
+                        ini_set('display_errors', 1);
+                        error_reporting(E_ALL);
+                        require '../../config/conexion.php';
+                        
+                        $teachers = 'SELECT * FROM maestros';
+                        $stmt = $conn->prepare($teachers);
+                        $res = $stmt->execute();
+                        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                        $iterator = new ArrayIterator($data);
+                      ?>
+                        <option value=""> --- Select Teacher --- </option>
+                        <?php while($iterator->valid()){ ?>
+                          <?php $row = $iterator->current(); ?>
+                          <option value="<?php echo $row['id'];?>"><?php echo $row['name'];?></option>
+                          <?php $iterator->next(); ?>
+                        <?php }?>
+                    </select>                  
+
+                    <!--
                     <div class="input-espaciado">
                         <div class="input-field">
                             <input 
@@ -165,7 +188,7 @@
                             >
                             <label>Teacher</label>
                         </div>
-                    </div>
+                    </div> -->
 
                     <div style="display: flex; align-items: center; justify-content: center;">
                         <a href="table.php" class="btn btn-warning" style="margin-right: 20px;">Cancel</a>

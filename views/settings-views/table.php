@@ -9,7 +9,7 @@
                FROM cursos 
                LEFT JOIN maestros 
                 ON maestros.id = cursos.cur_mae_id
-               ORDER BY cursos.cur_id ASC';
+               ORDER BY cursos.cur_name ASC';
 
     $stmt = $conn->prepare($query);
     $resultado = $stmt->execute();

@@ -398,11 +398,12 @@
   width: 60px;
   height: 60px;
   background: #58629b;
-  cursor: pointer;
+  /* cursor: pointer; */
   transition: .2s;
 }
 
+/*
 .search-bar button:hover {
   transform: scale(1.1);
   transition: .2s ease-in;
-}
+} */
