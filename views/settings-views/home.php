@@ -49,6 +49,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.css">
 </head>
 <body>
+   
     <div class="sidebar" id="sidebar">
       <div class="logo-details">
         <img src="../../images/logo-v.jpg" style="width: 60px;" class="bx icon">
@@ -151,7 +152,15 @@
                         </div>
                     </div>
 
-                    <select name="cur_mae_id">
+                    <select name="cur_mae_id" 
+                            style="width: 88%;
+                                    height: 35px;
+                                    border-radius: 7px;
+                                    border: none;
+                                    outline: none;
+                                    background-color: #353434;
+                                    color: #fff;
+                                    margin-bottom: 30px;">
                       <?php
                         ini_set('display_errors', 1);
                         error_reporting(E_ALL);
@@ -163,7 +172,10 @@
                         $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         $iterator = new ArrayIterator($data);
                       ?>
-                        <option value=""> --- Select Teacher --- </option>
+                      <optgroup>
+                        <option value="" class="text-center" disabled selected>----Select a teacher----</option>
+                      </optgroup>
+                        
                         <?php while($iterator->valid()){ ?>
                           <?php $row = $iterator->current(); ?>
                           <?php if (intval($row['verify']) === 1): ?>
