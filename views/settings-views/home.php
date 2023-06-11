@@ -9,7 +9,7 @@
         $cur_category = $_POST['cur_category'];
         $cur_descrip = $_POST['cur_descrip'];
         $cur_img = $_POST['cur_img'];
-        $cur_mae_id = $_POST['teacher'];
+        $cur_mae_id = $_POST['cur_mae_id'];
 
         echo $cur_mae_id;
 
@@ -50,6 +50,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.css">
 </head>
 <body>
+   
     <div class="sidebar" id="sidebar">
       <div class="logo-details">
         <img src="../../images/logo-v.jpg" style="width: 60px;" class="bx icon">
@@ -157,7 +158,7 @@
                         </div>
                     </div>
 
-                    <select name="teacher">
+                    <select name="cur_mae_id">
                       <?php
                         ini_set('display_errors', 1);
                         error_reporting(E_ALL);
@@ -176,19 +177,6 @@
                           <?php $iterator->next(); ?>
                         <?php }?>
                     </select>                  
-
-                    <!--
-                    <div class="input-espaciado">
-                        <div class="input-field">
-                            <input 
-                                type="number" 
-                                name="cur_mae_id" 
-                                id="cur_mae_id"
-                                required
-                            >
-                            <label>Teacher</label>
-                        </div>
-                    </div> -->
 
                     <div style="display: flex; align-items: center; justify-content: center;">
                         <a href="table.php" class="btn btn-warning" style="margin-right: 20px;">Cancel</a>
