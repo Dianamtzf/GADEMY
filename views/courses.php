@@ -1,16 +1,29 @@
-<!-- Cursos En forma de tarjetas y buscador-->
 <?php 
-session_start();
-require '../config/conexion.php'; // Pega de manera permanente el código
+    ini_set('display_errors', 1);
+    error_reporting(E_ALL);
+    require '../config/conexion.php'; // Pega de manera permanente el código
 
-$query = "SELECT cursos.*, maestros.name AS maestro_name FROM cursos INNER JOIN maestros ON cursos.cur_mae_id = maestros.id"; 
-$registro = $conn->prepare($query);
-$registro->execute();
-$cursos = $registro->fetchAll(PDO::FETCH_ASSOC);
+    $query = "SELECT cursos.*, maestros.name AS maestro_name FROM cursos INNER JOIN maestros ON cursos.cur_mae_id = maestros.id"; 
+    $registro = $conn->prepare($query);
+    $registro->execute();
+    $cursos = $registro->fetchAll(PDO::FETCH_ASSOC);
 
-$regist = $conn->prepare($query);
-$regist->execute();
-$maestros = $regist->fetchAll(PDO::FETCH_ASSOC);
+    $regist = $conn->prepare($query);
+    $regist->execute();
+    $maestros = $regist->fetchAll(PDO::FETCH_ASSOC);
+
+    session_start();
+	if (isset($_SESSION['user_id'])) { //verificar si ya habia abierto la sesion
+		$query = "SELECT * FROM maestros WHERE id = :id"; //:id == ?
+		$registro = $conn->prepare($query);
+		$registro->bindParam(':id', $_SESSION['user_id']); //sobreescribir el parametro
+		$registro->execute();
+		$resultado = $registro->fetch(PDO::FETCH_ASSOC);
+		$user = null;
+		if (count($resultado) > 0){
+			$user = $resultado;
+		}
+	}
 
 ?>
 
@@ -28,57 +41,89 @@ $maestros = $regist->fetchAll(PDO::FETCH_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-
+<?php require '../partials/header.php'?>
+    <?php if($user['verify'] == 0): ?>
         <div class="sidebar" id="sidebar">
-                <div class="logo-details">
-                    <img src="../images/logo-v.jpg" style="width: 60px;" class="bx icon">
-                    <div class="logo_name">GADEMY</div>
-                    <i class='bx bx-menu' id="btn"></i>
-                </div>
-                <ul class="nav-list">
-                    <li>
-                        <a href="../index.php">
-                            <i class='bx bxs-home'></i>
-                            <span class="links_name">Home</span>
-                        </a>
-                        <span class="tooltip">Home</span>
-                    </li>
-                    <li>
-                        <a href="courses.php">
-                            <i class='bx bx-book-bookmark'></i>
-                            <span class="links_name">Courses</span>
-                        </a>
-                        <span class="tooltip">Courses</span>
-                    </li>
-                    <li>
-                        <a href="teachers.php">
-                            <i class='bx bxs-graduation'></i>
-                            <span class="links_name">Teachers</span>
-                        </a>
-                        <span class="tooltip">Teachers</span>
-                    </li>
-                    <li>
-                        <a href="students.php">
-                            <i class='bx bxs-group'></i>
-                            <span class="links_name">Students</span>
-                        </a>
-                        <span class="tooltip">Students</span>
-                    </li>
-                    <li>
-                        <a href="settings-views/table.php">
-                            <i class='bx bx-cog'></i>
-                            <span class="links_name">Settings</span>
-                        </a>
-                        <span class="tooltip">Settings</span>
-                    </li>
-                    <li class="profile">
-                        <a href="../logout.php">
-                            <i class='bx bx-log-out'></i>
-                            <span class="links_name">Logout</span>
-                        </a>
-                    </li>
-                </ul>
+            <div class="logo-details">
+                <img src="../images/logo-v.jpg" style="width: 60px;" class="bx icon">
+                <div class="logo_name">GADEMY</div>
+                <i class='bx bx-menu' id="btn"></i>
             </div>
+            <ul class="nav-list">
+                <li>
+                    <a href="../">
+                        <i class='bx bxs-home'></i>
+                        <span class="links_name">Home</span>
+                    </a>
+                    <span class="tooltip">Home</span>
+                </li>
+                <li>
+                    <a href="../views/courses.php">
+                        <i class='bx bx-book-bookmark'></i>
+                        <span class="links_name">Courses</span>
+                    </a>
+                    <span class="tooltip">Courses</span>
+                </li>
+                <li class="profile">
+                    <a href="../logout.php">
+                        <i class='bx bx-log-out'></i>
+                        <span class="links_name">Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    <?php else: ?>
+        <div class="sidebar" id="sidebar">
+            <div class="logo-details">
+                <img src="../images/logo-v.jpg" style="width: 60px;" class="bx icon">
+                <div class="logo_name">GADEMY</div>
+                <i class='bx bx-menu' id="btn"></i>
+            </div>
+            <ul class="nav-list">
+                <li>
+                    <a href="../">
+                        <i class='bx bxs-home'></i>
+                        <span class="links_name">Home</span>
+                    </a>
+                    <span class="tooltip">Home</span>
+                </li>
+                <li>
+                    <a href="../views/courses.php">
+                        <i class='bx bx-book-bookmark'></i>
+                        <span class="links_name">Courses</span>
+                    </a>
+                    <span class="tooltip">Courses</span>
+                </li>
+                <li>
+                    <a href="../views/teachers.php">
+                        <i class='bx bxs-graduation'></i>
+                        <span class="links_name">Teachers</span>
+                    </a>
+                    <span class="tooltip">Teachers</span>
+                </li>
+                <li>
+                    <a href="../views/students.php">
+                        <i class='bx bxs-group'></i>
+                        <span class="links_name">Students</span>
+                    </a>
+                    <span class="tooltip">Students</span>
+                </li>
+                <li>
+                    <a href="../views/settings-views/table.php">
+                        <i class='bx bx-cog'></i>
+                        <span class="links_name">Settings</span>
+                    </a>
+                    <span class="tooltip">Settings</span>
+                </li>
+                <li class="profile">
+                    <a href="../logout.php">
+                        <i class='bx bx-log-out'></i>
+                        <span class="links_name">Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    <?php endif; ?>
 
     <section class="home-section">
         <div class="buscador">
