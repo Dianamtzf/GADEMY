@@ -9,9 +9,7 @@
         $cur_category = $_POST['cur_category'];
         $cur_descrip = $_POST['cur_descrip'];
         $cur_img = $_POST['cur_img'];
-        $cur_mae_id = $_POST['teacher'];
-
-        echo $cur_mae_id;
+        $cur_mae_id = $_POST['cur_mae_id'];
 
         $query = 'INSERT INTO cursos(cur_name, cur_category, cur_descrip, cur_img, cur_mae_id) 
                     VALUES(:cur_name, :cur_category, :cur_descrip, :cur_img, :cur_mae_id)'; 
@@ -27,10 +25,10 @@
         
         if($stmt->execute()) {
             $message = 'The course has been registered';
+            header('Location: table.php');
         } else {
             $message = 'Algo anda mal';
         }
-        header('Location: table.php');
     }
 
 ?>
@@ -134,14 +132,9 @@
                     </div>
 
                     <div class="input-espaciado">
-                        <div class="input-field">
-                            <input 
-                                type="text" 
-                                name="cur_descrip" 
-                                id="cur_descrip"
-                                required
-                            >
-                            <label>Course Description</label>
+                        <div class="input-field inputStyle">
+                        <label for="cur_descrip">Course Description</label>
+                        <textarea name="cur_descrip" id="cur_descrip" rows="4" required></textarea>
                         </div>
                     </div>
 
@@ -157,7 +150,7 @@
                         </div>
                     </div>
 
-                    <select name="teacher">
+                    <select name="cur_mae_id">
                       <?php
                         ini_set('display_errors', 1);
                         error_reporting(E_ALL);
@@ -172,27 +165,16 @@
                         <option value=""> --- Select Teacher --- </option>
                         <?php while($iterator->valid()){ ?>
                           <?php $row = $iterator->current(); ?>
-                          <option value="<?php echo $row['id'];?>"><?php echo $row['name'];?></option>
+                          <?php if (intval($row['verify']) === 1): ?>
+                            <option value="<?php echo $row['id'];?>"><?php echo $row['name'];?></option>
+                          <?php endif; ?>
                           <?php $iterator->next(); ?>
                         <?php }?>
                     </select>                  
 
-                    <!--
-                    <div class="input-espaciado">
-                        <div class="input-field">
-                            <input 
-                                type="number" 
-                                name="cur_mae_id" 
-                                id="cur_mae_id"
-                                required
-                            >
-                            <label>Teacher</label>
-                        </div>
-                    </div> -->
-
                     <div style="display: flex; align-items: center; justify-content: center;">
                         <a href="table.php" class="btn btn-warning" style="margin-right: 20px;">Cancel</a>
-                        <button type="submit" class="btn" style="background-color: #429867;" onclick="mostrarDialogo(event)">Add Course</button>
+                        <button type="submit" class="btn" style="background-color: #429867;" onclick="mostrarDialogo(event)" disabled>Add Course</button>
                     </div>
                     
                 </form>
@@ -215,6 +197,35 @@
             }).then(() => {
               event.target.form.submit();
             });
+        }
+        // Obtener referencias a los campos del formulario y al botón "Add Course"
+        const curNameInput = document.getElementById('cur_name');
+        const curCategoryInput = document.getElementById('cur_category');
+        const curDescripInput = document.getElementById('cur_descrip');
+        const curImgInput = document.getElementById('cur_img');
+        const teacherSelect = document.getElementsByName('cur_mae_id')[0];
+        const addCourseButton = document.querySelector('button[type="submit"]');
+
+        // Agregar un event listener para detectar cambios en los campos del formulario y en el select del profesor
+        curNameInput.addEventListener('input', validarCampos);
+        curCategoryInput.addEventListener('input', validarCampos);
+        curDescripInput.addEventListener('input', validarCampos);
+        curImgInput.addEventListener('input', validarCampos);
+        teacherSelect.addEventListener('change', validarCampos);
+
+        // Función para validar los campos y habilitar/deshabilitar el botón "Add Course"
+        function validarCampos() {
+          if (
+            curNameInput.value.trim() !== '' &&
+            curCategoryInput.value.trim() !== '' &&
+            curDescripInput.value.trim() !== '' &&
+            curImgInput.value.trim() !== '' &&
+            teacherSelect.value.trim() !== ''
+          ) {
+            addCourseButton.removeAttribute('disabled');
+          } else {
+            addCourseButton.setAttribute('disabled', 'disabled');
+          }
         }
     </script>
 </body>
