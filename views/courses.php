@@ -1,4 +1,3 @@
-<!-- Cursos En forma de tarjetas y buscador-->
 <?php 
 session_start();
 require '../config/conexion.php'; // Pega de manera permanente el código
