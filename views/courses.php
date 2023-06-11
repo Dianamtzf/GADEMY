@@ -92,7 +92,7 @@ $maestros = $regist->fetchAll(PDO::FETCH_ASSOC);
                                                                                                         padding: 10px;
                                                                                                         border: 2px solid ffffff38;
                                                                                                         border-width: 1px;
-                                                                                                        border-radius: 14pxpx;
+                                                                                                        border-radius: 14px;
                                                                                                         background-color: transparent;
                                                                                                         font-size: 16px;
                                                                                                         color: #ffffff38;
