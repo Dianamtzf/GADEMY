@@ -6,7 +6,7 @@
     $message = '';
 
     $courseId = $_GET['cur_id'];
-    $query = "SELECT * FROM cursos WHERE cur_id='$courseId'";
+    $query = "SELECT cursos.*, maestros.name, maestros.id FROM cursos, maestros WHERE cur_id='$courseId'";
     $stmt = $conn->prepare($query);
     $resultado = $stmt->execute();
 
@@ -103,9 +103,9 @@
                     </div>
 
                     <div class="input-espaciado">
-                        <div class="input-field">
-                          <input type="text" name="cur_descrip" id="cur_descrip" value="<?php echo $data['cur_descrip'];?>" required>
-                          <label>Course Description</label>
+                        <div class="input-field inputStyle">
+                        <label for="cur_descrip">Course Description</label>
+                        <textarea name="cur_descrip" id="cur_descrip" rows="4" required><?php echo $data['cur_descrip']; ?></textarea>
                         </div>
                     </div>
 
@@ -115,13 +115,39 @@
                           <label>Course's URL image</label>
                         </div>
                     </div>
-
-                    <div class="input-espaciado">
-                        <div class="input-field">
-                          <input type="number" name="cur_mae_id" min="0" max="999" id="cur_mae_id" value="<?php echo $data['cur_mae_id'];?>" required>  
-                          <label>Teacher</label>
-                        </div>
-                    </div>
+                    
+                    <select name="cur_mae_id" 
+                            style="width: 88%;
+                                    height: 35px;
+                                    border-radius: 7px;
+                                    border: none;
+                                    outline: none;
+                                    background-color: #353434;
+                                    color: #fff;
+                                    margin-bottom: 30px;">
+                      <?php
+                        ini_set('display_errors', 1);
+                        error_reporting(E_ALL);
+                        require '../../config/conexion.php';
+                        
+                        $teachers = 'SELECT * FROM maestros';
+                        $stmt = $conn->prepare($teachers);
+                        $res = $stmt->execute();
+                        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                        $iterator = new ArrayIterator($data);
+                      ?>
+                      <optgroup>
+                        <option value="" class="text-center" disabled selected>----Select a teacher----</option>
+                      </optgroup>
+                        
+                        <?php while($iterator->valid()){ ?>
+                          <?php $row = $iterator->current(); ?>
+                          <?php if (intval($row['verify']) === 1): ?>
+                            <option value="<?php echo $row['id'];?>"><?php echo $row['name'];?></option>
+                          <?php endif; ?>
+                          <?php $iterator->next(); ?>
+                        <?php }?>
+                    </select>
 
                     <div style="display: flex; align-items: center; justify-content: center;">
                         <a href="table.php" class="btn btn-warning" style="margin-right: 20px;">Cancel</a>
