@@ -32,7 +32,7 @@
 <html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <title>Responsive Sidebar Menu | CodingLab</title>
+    <title>Courses GADEMY</title>
     <link rel="icon" href="../images/logo.ico"></link>
     <link rel="stylesheet" href="../css/courses.css">
     <script type="module" src="../js/courses.js"></script>

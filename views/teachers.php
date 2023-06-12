@@ -14,7 +14,7 @@
 <html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <title>Responsive Sidebar Menu | CodingLab</title>
+    <title>Teachers GADEMY</title>
     <link rel="icon" href="../images/logo.ico"></link>
     <link rel="stylesheet" href="../css/teachers.css">
     <script type="module" src="../js/teachers.js"></script>

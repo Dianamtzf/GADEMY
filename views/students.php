@@ -16,7 +16,7 @@ $maestros = $registro->fetchAll(PDO::FETCH_ASSOC);
 <html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <title>Responsive Sidebar Menu | CodingLab</title>
+    <title>Students GADEMY</title>
     <link rel="icon" href="../images/logo.ico"></link>
     <link rel="stylesheet" href="../css/students.css">
     <script type="module" src="../js/students.js"></script>
