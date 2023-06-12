@@ -107,7 +107,7 @@ $maestros = $registro->fetchAll(PDO::FETCH_ASSOC);
                 <?php if (intval($maestro['verify']) === 0): ?>
                     <div class="card" style="  box-shadow: 1px 0px 12px 4px rgba(0,0,0,0.49);
                                                 -webkit-box-shadow: 1px 0px 12px 4px rgba(0,0,0,0.49);
-                                                -moz-box-shadow: 1px 0px 12px 4px rgba(0,0,0,0.49);">
+                                                -moz-box-shadow: 1px 0px 12px 4px rgba(0,0,0,0.49); height: 350px; ">
                         <div style="flex: 1;">
                             <img class="imgStyle" src="<?= $maestro['mae_img'] ?>">
                         </div>
